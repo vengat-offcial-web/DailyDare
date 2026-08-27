@@ -43,8 +43,8 @@
 
             <div class="btn-actions">
                 {% if is_active %}
-                    <button class="btn btn-accept">Complete Dare</button>
-                    <button class="btn btn-next">Give Up</button>
+                    <a href="{% url 'complete_dare' user_challenge.id %}" class="btn btn-accept">Complete Dare</a>
+                    <a href="{% url 'giveup_dare' user_challenge.id %}" class="btn btn-next">Give Up</a>
                 {% else %}
                     <a href="{% url 'accept_dare' challenge.id %}" class="btn btn-accept">Accept Dare</a>
                     <a href="/" class="btn btn-next">Next Dare</a>
