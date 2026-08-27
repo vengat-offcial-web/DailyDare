@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Dare</title>
+    <link rel="stylesheet" href="{% static 'css/challenge.css' %}">
+</head>
+<body>
+
+<header class="app-header">
+    <div class="brand">DAILY DARE</div>
+    <div class="user-stats">
+        <div class="stat-item">LVL 1</div>
+        <div class="stat-item xp">+0 XP</div>
+    </div>
+</header>
+
+<main class="main-wrapper">
+    <div class="card-container">
+        <span class="section-tag">Featured Dare</span>
+
+        <div class="challenge-card">
+            <div class="card-tags">
+                <span class="badge badge-category">{{ challenge.category }}</span>
+                <span class="badge badge-difficulty">{{ challenge.difficulty }}</span>
+            </div>
+
+            <h1 class="challenge-title">{{ challenge.title }}</h1>
+            <p class="challenge-desc">{{ challenge.description }}</p>
+
+            <div class="meta-panel">
+                <div class="meta-block">
+                    <span class="meta-label">Time Limit</span>
+                    <span class="meta-value">{{ challenge.time_limit }} mins</span>
+                </div>
+                <div class="meta-block" style="text-align: right;">
+                    <span class="meta-label">Reward</span>
+                    <span class="meta-value points">+{{ challenge.points }} XP</span>
+                </div>
+            </div>
+
+            <div class="btn-actions">
+                <button class="btn btn-accept">Accept Dare</button>
+                <a href="/" class="btn btn-next">Next Dare</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
