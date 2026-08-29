@@ -6,7 +6,7 @@ class Challenge(models.Model):
     title = models.CharField(max_length= 225)
     description = models.TextField(max_length= 225)
     category = models.CharField(max_length= 100)
-    difficulity = models.CharField(max_length= 50)
+    difficulty = models.CharField(max_length= 50)
     time_limit = models.IntegerField(default= 15)
     points = models.IntegerField(default=10)
     
@@ -18,9 +18,9 @@ class UserChallenge(models.Model):
     challenge = models.ForeignKey (Challenge, on_delete= models.CASCADE)
     
     STATUS_CHOICES = [
-       ("IN_PROGRESS"),
-        ("COMPLETED"),
-        ("FAILED")
+       ('IN_PROGRESS','In Progress'),
+        ('COMPLETED','Completed'),
+        ('FAILED','Failed')
     ]
     
     status = models.CharField(max_length=20, choices= STATUS_CHOICES, default= "IN_PROGRESS")
