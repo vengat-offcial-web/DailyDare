@@ -27,4 +27,4 @@ class UserChallenge(models.Model):
     active_at = models.DateTimeField(auto_now_add= True)
     
     def __str__(self):
-        return f"{self.challenge.title} - {self.status} "
+        return f"{self.challenge.title} - {self.status} "  
