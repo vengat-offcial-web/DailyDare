@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at 50% 50%, #3e2615 0%, #150b05 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #2b1d0c;
+}
+
+.app-header {
+    background-color: #140b05;
+    border-bottom: 2px solid #5a432d;
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #dfa743;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.user-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-badge {
+    background-color: #1c1007;
+    border: 1.5px solid #5e452e;
+    color: #edd9be;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+.stat-badge.xp-badge {
+    border-color: #94712e;
+    color: #dfa743;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.quest-container {
+    width: 100%;
+    max-width: 530px;
+}
+
+.section-tag {
+    color: #cf9e46;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.quest-card {
+    background-color: #f6efe1;
+    border: 4px solid #7d654c;
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+}
+
+.card-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.badge-category {
+    background-color: #385d77;
+    border: 1px solid #274458;
+}
+
+.badge-difficulty {
+    background-color: #8c382b;
+    border: 1px solid #632319;
+}
+
+.quest-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #170d06;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.divider {
+    border: none;
+    border-top: 1.5px dashed #cfbda6;
+    margin-bottom: 16px;
+}
+
+.quest-desc {
+    font-size: 0.95rem;
+    color: #3b2c1e;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.meta-box {
+    background-color: #ebdcc2;
+    border: 1.5px solid #d4c0a1;
+    border-radius: 8px;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.meta-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #786653;
+    letter-spacing: 1px;
+}
+
+.meta-val {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #170d06;
+}
+
+.reward-val {
+    color: #996e1b;
+}
+
+.btn-group {
+    display: flex;
+    gap: 14px;
+}
+
+.btn {
+    flex: 1;
+    padding: 13px 10px;
+    font-size: 0.85rem;
+    font-weight: 900;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.08s ease;
+}
+
+.btn-accept {
+    background-color: #286630;
+    color: #ffffff;
+    border: 1.5px solid #1a4521;
+    box-shadow: 0 4px 0 #133317;
+}
+
+.btn-accept:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #133317;
+}
+
+.btn-next {
+    background-color: #6e5b4a;
+    color: #ffffff;
+    border: 1.5px solid #4a3c2f;
+    box-shadow: 0 4px 0 #33271d;
+}
+
+.btn-next:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #33271d;
+}
+
+@media (max-width: 520px) {
+    .app-header {
+        padding: 12px 16px;
+    }
+    .quest-card {
+        padding: 20px 16px;
+    }
+    .btn-group {
+        flex-direction: column;
+    }
+}

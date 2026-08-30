@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Dare</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="brand">DAILY DARE</div>
+        <div class="user-stats">
+            <span class="stat-badge">LVL 1</span>
+            <span class="stat-badge xp-badge">+0 XP</span>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="quest-container">
+            <div class="section-tag">FEATURED DARE</div>
+
+            {% if dare %}
+            <div class="quest-card">
+                <div>
+                    <div class="card-tags">
+                        <span class="badge badge-category">{{ dare.category }}</span>
+                        <span class="badge badge-difficulty">{{ dare.difficulty }}</span>
+                    </div>
+
+                    <h1 class="quest-title">{{ dare.title }}</h1>
+                    <hr class="divider">
+                    <p class="quest-desc">{{ dare.description }}</p>
+                </div>
+
+                <div>
+                    <div class="meta-box">
+                        <div class="meta-col">
+                            <span class="meta-label">TIME LIMIT</span>
+                            <span class="meta-val">{{ dare.time_limit }} mins</span>
+                        </div>
+                        <div class="meta-col text-right">
+                            <span class="meta-label">REWARD</span>
+                            <span class="meta-val reward-val">+{{ dare.points }} XP</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-accept">ACCEPT DARE</a>
+                        <a href="{% url 'home' %}" class="btn btn-next">NEXT DARE</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="quest-card">
+                <p class="quest-desc" style="text-align: center; margin-bottom: 0;">No dares found in the database, Adventurer!</p>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+
+</body>
+</html>
