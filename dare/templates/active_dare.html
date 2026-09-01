@@ -4,31 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Dare</title>
-    <link rel="stylesheet" href="{% static 'css/active_dare.css' %}">
+    <title>Daily Dare - Active Dare</title>
+    <link rel="stylesheet" href="{% static 'css/active_dare.css' %}?v=99">
 </head>
 <body>
 
-    <div class="card">
-        <div class="badge">ACTIVE DARE</div>
-        
-        <h1 class="title">{{ user_challenge.challenge.title }}</h1>
-        <p class="description">{{ user_challenge.challenge.description }}</p>
-
-        <div class="timer-box">
-            <span class="timer-label">Time Remaining</span>
-            <div class="timer-display" id="timer">--:--</div>
+    <header class="app-header">
+        <div class="brand">DAILY DARE</div>
+        <div class="user-stats">
+            <div class="stat-badge">LVL 1</div>
+            <div class="stat-badge xp-badge">+0 XP</div>
         </div>
+    </header>
 
-        <div class="points">
-            +{{ user_challenge.challenge.points }} XP
-        </div>
+    <div class="main-wrapper">
+        <div class="quest-container">
+            <div class="section-tag">ACTIVE DARE</div>
+            
+            <div class="quest-card">
+                <div class="card-tags">
+                    <span class="badge badge-category">{{ user_challenge.challenge.category|default:"FITNESS" }}</span>
+                    <span class="badge badge-difficulty">{{ user_challenge.challenge.difficulty|default:"EASY" }}</span>
+                </div>
 
-        <div class="btn-group">
-            <a href="#" class="btn btn-giveup">GIVE UP</a>
-            <a href="#" class="btn btn-accept">COMPLETE</a> 
+                <h1 class="quest-title">{{ user_challenge.challenge.title }}</h1>
+                <p class="quest-desc">{{ user_challenge.challenge.description }}</p>
+
+                <hr class="divider">
+
+                <div class="meta-box">
+                    <div class="meta-col">
+                        <span class="meta-label">TIME REMAINING</span>
+                        <span class="meta-val" id="timer" data-seconds="{{ remaining_seconds }}">--:--</span>
+                    </div>
+                    <div class="meta-col text-right">
+                        <span class="meta-label">REWARD</span>
+                        <span class="meta-val reward-val">+{{ user_challenge.challenge.points }} XP</span>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="{% url 'giveup_dare' user_challenge.id %}" class="btn btn-next">GIVE UP</a>
+                    <a href="{% url 'complete_dare' user_challenge.id %}" class="btn btn-accept">COMPLETE</a>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="{% static 'js/timer.js' %}"></script>
 </body>
 </html>

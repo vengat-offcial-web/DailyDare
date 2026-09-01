@@ -28,3 +28,5 @@ class UserChallenge(models.Model):
     
     def __str__(self):
         return f"{self.challenge.title} - {self.status} "  
+    
+    
