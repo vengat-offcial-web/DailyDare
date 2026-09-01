@@ -37,8 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (countdown) clearInterval(countdown);
             timerDisplay.innerText = "00:00 (EXPIRED)";
             timerDisplay.style.color = "#c0392b";
-
-            window.location.href = "{% url 'giveup_dare' user_challenge.id %}";
             
             if (completeBtn) {
                 completeBtn.style.pointerEvents = "none";
