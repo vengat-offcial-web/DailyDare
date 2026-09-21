@@ -9,15 +9,15 @@ def home(request):
 
 def accept_dare(request, dare_id):
     
-    challenge = get_object_or_404(Challenge, id = dare_id)
+    challenge =get_object_or_404(Challenge, id = dare_id)
     
     user_challenge = UserChallenge.objects.create(
         
         user = request.user,
         challenge = challenge,
-        status = 'IN_PROGRESS'
+        status = "IN_PROGRESS"    
     )
     
-    return redirect('active_challenge', challenge_id = user_challenge.id)
-    
+    return redirect('active_dare', challenge_id = user_challenge.id)
+
     
