@@ -24,3 +24,4 @@ class UserChallenge(models.Model):
     challenge = models.ForeignKey(Challenge, on_delete= models.CASCADE)
     status = models.CharField(max_length= 20, choices= STATUS_CHOICES, default= "IN_PROGRESS")
     active_at = models.DateTimeField(auto_now_add= True)
+    

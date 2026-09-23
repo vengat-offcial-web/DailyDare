@@ -20,4 +20,11 @@ def accept_dare(request, dare_id):
     
     return redirect('active_dare', challenge_id = user_challenge.id)
 
+def active_dare(request, challenge_id):
     
+    user_challenge = get_object_or_404(UserChallenge, id = challenge_id)
+    context = {
+        'user_challenge' : user_challenge
+    }
+    
+    return render(request,'active_dare.html',context)
