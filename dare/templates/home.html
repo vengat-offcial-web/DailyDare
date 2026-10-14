@@ -24,19 +24,16 @@
         <div class="quest-container">
             <div class="section-tag">FEATURED DARE</div>
 
-            <!-- 1. Database-la dare irukka nu if condition inga open pannanum -->
-
             <div class="quest-card">
                 <div>
                     <div class="card-tags">
-                        <!-- REPLACE: Dare difficulty inga vara vekkanum -->
+                        
                         <span class="badge badge-difficulty">{{dare.difficulty}}</span>
                     </div>
 
-                    <!-- REPLACE: Dare title inga vara vekkanum -->
                     <h1 class="quest-title">{{dare.title}}</h1>
                     <hr class="divider">
-                    <!-- REPLACE: Dare description inga vara vekkanum -->
+                    
                     <p class="quest-desc">{{dare.description}}</p>
                 </div>
 
@@ -44,26 +41,22 @@
                     <div class="meta-box">
                         <div class="meta-col">
                             <span class="meta-label">TIME LIMIT</span>
-                            <!-- REPLACE: Time limit number inga vara vekkanum -->
+                            
                             <span class="meta-val">{{dare.time_limit}} mins</span>
                         </div>
                         <div class="meta-col text-right">
                             <span class="meta-label">REWARD</span>
-                            <!-- REPLACE: Points number inga vara vekkanum -->
                             <span class="meta-val reward-val">{{dare.points}}</span>
                         </div>
                     </div>
 
                     <div class="btn-group">
-                        <!-- ACCEPT DARE button ippodhaikku href="#" nu vechikonga -->
                         <a href="{% url 'accept_dare' dare.id %}" class="btn btn-accept">ACCEPT DARE</a>
-                        <!-- REPLACE: Next dare-ku home URL call pannanum -->
+                        
                         <a href="{% url 'home' %}" class="btn btn-next">NEXT DARE</a>
                     </div>
                 </div>
             </div>
-
-            <!-- 2. Dare edhuvum illana else block pottu if-ah close pannanum -->
             {% else %}
             <p>No dares found</p>
             {% endif %}

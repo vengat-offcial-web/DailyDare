@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="btn-group">
-                    <a href="{% url 'giveup_dare' user_challenge.id %}" class="btn btn-next">GIVE UP</a>
-                    <a href="{% url 'complete_dare' user_challenge.id %}" class="btn btn-accept">COMPLETE</a>
+                    <a href="{% url 'giveup_dare' challenge_id=user_challenge.id %}" class="btn btn-next">GIVE UP</a>
+                    <a href="{% url 'complete_dare' challenge_id=user_challenge.id %}" class="btn btn-accept">COMPLETE</a>
                 </div>
             </div>
         </div>
