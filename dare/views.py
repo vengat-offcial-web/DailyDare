@@ -28,3 +28,24 @@ def active_dare(request, challenge_id):
     }
     
     return render(request,'active_dare.html',context)
+
+def complete_dare(request, challenge_id):
+    
+    user_challenge = get_object_or_404(UserChallenge, id = challenge_id)
+    
+    user_challenge.status = "COMPLETED"
+    user_challenge.save()
+    
+    return redirect('home')
+
+def giveup_dare(request, challenge_id):
+    
+    user_challenge = get_object_or_404(UserChallenge, id = challenge_id)
+    
+    user_challenge.status = "FAILED"
+    user_challenge.save()
+    
+    return redirect('home')
+    
+    
+    
