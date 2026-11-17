@@ -23,8 +23,11 @@ def accept_dare(request, dare_id):
 def active_dare(request, challenge_id):
     
     user_challenge = get_object_or_404(UserChallenge, id = challenge_id)
+    remaining_seconds = user_challenge.challenge.time_limit * 60
     context = {
-        'user_challenge' : user_challenge
+        'user_challenge' : user_challenge,
+        'remaining_seconds': remaining_seconds
+        
     }
     
     return render(request,'active_dare.html',context)
