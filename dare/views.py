@@ -7,6 +7,8 @@ def home(request):
     context = {'dare' : challenge}
     return render(request,'home.html', context)
 
+
+
 def accept_dare(request, dare_id):
     
     challenge =get_object_or_404(Challenge, id = dare_id)
@@ -27,7 +29,6 @@ def active_dare(request, challenge_id):
     context = {
         'user_challenge' : user_challenge,
         'remaining_seconds': remaining_seconds
-        
     }
     
     return render(request,'active_dare.html',context)
