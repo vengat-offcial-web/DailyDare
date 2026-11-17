@@ -1,59 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. HTML-la irundhu Timer text, Complete button, and Give Up button-ah pudikkurom
-    const timerElement = document.getElementById("timer");
-    const completeBtn = document.getElementById("complete-btn");
-    const giveupBtn = document.querySelector(".btn-next"); // Auto-fail redirect-kaga Give Up link edukurom
+// 1. HTML-la irukkura 3 mukkiyamaana items-ah edukurom
+var timerText = document.getElementById("timer");
+var completeBtn = document.getElementById("complete-btn");
+var giveupBtn = document.querySelector(".btn-next");
 
-    if (!timerElement) return;
+// 2. HTML-la irundhu total seconds edukurom (eg: 60)
+var seconds = parseInt(timerText.getAttribute("data-seconds"));
 
-    let remainingSeconds = parseInt(timerElement.getAttribute("data-seconds")) || 60;
+// 3. Page open aana udane time 30s-ku mela irundha button-ah lock pandrom
+if (seconds > 30) {
+    completeBtn.style.opacity = "0.4";
+    completeBtn.style.pointerEvents = "none";
+    completeBtn.innerText = "LOCKED";
+}
 
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-    }
+// 4. Ovvoru 1 second-kum indha timer loop odum
+var timer = setInterval(function() {
 
-    // Helper Function A: Complete button-ah Lock & Blend panradhu
-    function lockCompleteButton() {
-        if (!completeBtn) return;
-        completeBtn.style.opacity = "0.35";           // Dull-a background kooda blend aagum
-        completeBtn.style.pointerEvents = "none";     // Mouse click panna mudiyadhu
-        completeBtn.style.cursor = "not-allowed";     // Blocked icon kaattum
-        completeBtn.innerText = "LOCKED";             // User-ku puriya text maathurom
-    }
+    // Minutes and Seconds calculation
+    var mins = Math.floor(seconds / 60);
+    var secs = seconds % 60;
 
-    // Helper Function B: Last 30 seconds-la Unlock panradhu
-    function unlockCompleteButton() {
-        if (!completeBtn) return;
-        completeBtn.style.opacity = "1";              // Normal bright green color
-        completeBtn.style.pointerEvents = "auto";     // Click panna mudiyum
-        completeBtn.style.cursor = "pointer";
+    // 10-ku kulla irundha munnadi '0' serkurom (eg: 9 -> 09)
+    if (mins < 10) { mins = "0" + mins; }
+    if (secs < 10) { secs = "0" + secs; }
+
+    // Screen-la time-ah kaaturom (eg: 01:30)
+    timerText.innerText = mins + ":" + secs;
+
+    // Kadaisi 30 seconds vandha: Timer RED color + Button UNLOCK!
+    if (seconds <= 30) {
+        timerText.style.color = "red";
+        completeBtn.style.opacity = "1";
+        completeBtn.style.pointerEvents = "auto";
         completeBtn.innerText = "COMPLETE";
     }
 
-    // Page load aana udane time 30 seconds-ku mela irundha button-ah lock pannidu
-    if (remainingSeconds > 30) {
-        lockCompleteButton();
+    // Time 0 aana udane: Timer stop + Automatic Give Up
+    if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = giveupBtn.href;
     }
 
-    timerElement.innerText = formatTime(remainingSeconds);
+    // Ovvoru second-um 1 kuraiyurom
+    seconds = seconds - 1;
 
-    const timerInterval = setInterval(() => {
-        remainingSeconds--;
-        timerElement.innerText = formatTime(remainingSeconds);
-
-        // Kadaisi 30 seconds vandha udane Anti-Cheat lock open aagum
-        if (remainingSeconds <= 30 && remainingSeconds > 0) {
-            unlockCompleteButton();
-        }
-
-        // Time 00:00 aana udane Auto-Fail
-        if (remainingSeconds <= 0) {
-            clearInterval(timerInterval);
-            if (giveupBtn) {
-                window.location.href = giveupBtn.href; // Automatic-a Give Up URL-ku pogum
-            }
-        }
-    }, 1000);
-});
+}, 1000);

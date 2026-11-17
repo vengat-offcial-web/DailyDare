@@ -44,12 +44,12 @@
 
                 <div class="btn-group">
                     <a href="{% url 'giveup_dare' challenge_id=user_challenge.id %}" class="btn btn-next">GIVE UP</a>
-                    <a href="{% url 'complete_dare' challenge_id=user_challenge.id %}" class="btn btn-accept">COMPLETE</a>
+                    <a href="{% url 'complete_dare' challenge_id=user_challenge.id %}" id="complete-btn" class="btn btn-accept">COMPLETE</a>
                 </div>
             </div>
         </div>
     </div>
-<script src="{% static 'js/timer.js' %}"></script>
+<script src="{% static 'js/timer.js' %}?v=2"></script>
 </body>
 
 </html>
